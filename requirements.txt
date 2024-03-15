@@ -14,6 +14,7 @@ bleach==6.1.0
 certifi==2024.2.2
 cffi==1.16.0
 charset-normalizer==3.3.2
+click==8.1.7
 comm==0.2.1
 contourpy==1.2.0
 cycler==0.12.1
@@ -61,8 +62,10 @@ jupyterlab==4.1.4
 jupyterlab_pygments==0.3.0
 jupyterlab_server==2.25.4
 jupyterlab_widgets==3.0.10
+kagglehub==0.2.0
 keras==3.0.5
 keras-core==0.1.7
+keras-nlp==0.8.2
 kiwisolver==1.4.5
 libclang==16.0.6
 Markdown==3.5.2
@@ -78,6 +81,7 @@ nbclient==0.9.0
 nbconvert==7.16.2
 nbformat==5.9.2
 nest-asyncio==1.6.0
+nltk==3.8.1
 notebook==7.1.1
 notebook_shim==0.2.4
 numpy==1.26.4
@@ -126,6 +130,7 @@ tensorboard==2.16.2
 tensorboard-data-server==0.7.2
 tensorflow==2.16.1
 tensorflow-io-gcs-filesystem==0.36.0
+tensorflow-text==2.16.1
 termcolor==2.4.0
 terminado==0.18.0
 threadpoolctl==3.3.0
@@ -147,4 +152,5 @@ webencodings==0.5.1
 websocket-client==1.7.0
 Werkzeug==3.0.1
 widgetsnbextension==4.0.10
+wordcloud==1.9.3
 wrapt==1.16.0
