@@ -8,6 +8,7 @@ __pycache__/
 
 # Data
 data/
+models/builds/
 
 # Virtual environment
 .venv/
