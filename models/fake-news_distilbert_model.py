@@ -11,4 +11,4 @@ X_temp, X_test, y_temp, y_test = train_model.split_data(data, "text", "true")
 
 train_model.fit_data(classifier, X_temp, y_temp, X_test, y_test)
 
-classifier.save("./builds/fake-news_distilbert_model")
+classifier.save("./builds/fake-news_distilbert_model.keras")
