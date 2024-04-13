@@ -25,7 +25,7 @@ def fit_data(
 ) -> None:
 
     classifier.fit(
-        x=X_train, y=y_train, validation_data=(X_test, y_test), epochs=2, batch_size=64
+        x=X_train, y=y_train, validation_data=(X_test, y_test), epochs=1, batch_size=128
     )
 
 
