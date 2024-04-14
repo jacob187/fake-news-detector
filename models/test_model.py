@@ -38,7 +38,7 @@ def test_model(model, data_frame: pd.DataFrame, text: str, labels: str):
     print(predicted_class)
 
     confidence_scores = confidence_score(predictions)
-    print(confidence_scores, type(confidence_scores))
+    print(confidence_scores)
 
     true_labels = data_frame[labels]
 
@@ -46,7 +46,6 @@ def test_model(model, data_frame: pd.DataFrame, text: str, labels: str):
 
 
 def confidence_score(predictions):
-    print(type(predictions))
     return np.max(softmax(predictions), axis=1)
 
 
