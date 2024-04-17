@@ -1,11 +1,15 @@
+import sys
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import warnings
 from tensorflow.keras.models import load_model
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, f1_score
-from clean_text import clean_text
-from create_training_dataset import load_and_shuffle_data
+
+sys.path.append("../")
+from utils.clean_text import clean_text
+from utils.create_training_dataset import load_and_shuffle_data
 
 
 def display_confusion_matrix(
