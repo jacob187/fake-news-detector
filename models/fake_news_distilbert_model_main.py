@@ -3,9 +3,9 @@ import define_model
 import train_model
 
 sys.path.append("../")
-import create_training_dataset
+from utils.create_training_dataset import load_and_shuffle_data
 
-data = create_training_dataset.load_and_shuffle_data("../data/processed/data.pk1")
+data = load_and_shuffle_data("../data/processed/data.pk1")
 classifier = define_model.define_model()
 
 
