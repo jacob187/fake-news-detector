@@ -10,6 +10,7 @@ from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, f1_score
 sys.path.append("../")
 from utils.clean_text import clean_text
 from utils.create_training_dataset import load_and_shuffle_data
+from utils.probability_calculations import confidence_score, softmax
 
 
 def display_confusion_matrix(
@@ -47,15 +48,6 @@ def test_model(model, data_frame: pd.DataFrame, text: str, labels: str):
     true_labels = data_frame[labels]
 
     display_confusion_matrix(true_labels, predicted_class)
-
-
-def confidence_score(predictions):
-    return np.max(softmax(predictions), axis=1)
-
-
-def softmax(x: np.ndarray):
-    e_x = np.exp(x - np.max(x))
-    return e_x / e_x.sum(axis=0)
 
 
 if __name__ == "__main__":
