@@ -2,6 +2,8 @@ import streamlit as st
 from tensorflow.keras.models import load_model
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+import wordcloud as WordCloud
 import sys
 
 sys.path.append("../")
@@ -14,7 +16,7 @@ st.set_page_config(
     page_title="Fake News Detector",
     page_icon="🗞️",
     layout="centered",
-    initial_sidebar_state="collapsed",
+    initial_sidebar_state="expanded",
 )
 
 
@@ -37,26 +39,42 @@ def predict_class(predictions):
     return "fake" if np.argmax(predictions) == 0 else "real"
 
 
+def create_wordcloud(df: pd.DataFrame, column: str) -> None:
+    text = " ".join(df[column])
+    wc = WordCloud.WordCloud(
+        width=3000,
+        height=2000,
+        background_color="white",
+        max_words=100,
+        colormap="Set2",
+        collocations=False,
+    ).generate(text)
+
+    plt.figure(figsize=(12, 6))
+    plt.imshow(wc, interpolation="bilinear")
+    plt.axis("off")
+    st.markdown("""#### Word Cloud for the article:""")
+
+    st.pyplot(plt.gcf())
+
+
 def display_home():
     col1, col2 = st.columns([1, 1])
     with col1:
-        st.write(
+        st.html(
             """
             <div style="display: grid; place-items: center; height: 20vh;">
                 <h1 style="color: #262730; font-size:2.5em">Fake News Detector</h1>
             </div>
-            """,
-            unsafe_allow_html=True,
+            """
         )
     with col2:
-
-        st.write(
+        st.html(
             """
             <div style="display: grid; place-items: center; height: 20vh;">
                 <i style="color: #6A73FF; font-weight: bold; letter-spacing: 1px;">Empower the Truth, Defeat Deception</i>
             </div>
-            """,
-            unsafe_allow_html=True,
+            """
         )
 
     intro_text = read_markdown_file("./content/intro.md")
@@ -95,6 +113,8 @@ def display_data():
         with tab1:
             st.write(f"Result: This article is {result}")
             st.write(f"Confidence score: {confidence_score:.2%}")
+        with tab2:
+            create_wordcloud(st.session_state.user_df, "text")
     else:
         pass
 
