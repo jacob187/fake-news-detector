@@ -52,7 +52,11 @@ def test_model(model, data_frame: pd.DataFrame, text: str, labels: str):
 
 if __name__ == "__main__":
     warnings.filterwarnings("ignore")
-    model = load_model("./builds/fake-news_distilbert_model.keras")
+    try:
+        model = load_model("./builds/fake-news_distilbert_model.keras")
+    except Exception as e:
+        print("Model not found. Please train the model first.")
+        sys.exit(1)
 
     data = load_and_shuffle_data("../data/processed/data.pk1")
     test_model(model, data.head(100), "text", "true")
