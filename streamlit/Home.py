@@ -1,5 +1,6 @@
 import streamlit as st
 from tensorflow.keras.models import load_model
+from tensorflow.keras.optimizers import Adam
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -12,21 +13,27 @@ from utils.clean_text import clean_text
 from utils.streamlit_helpers import read_markdown_file
 
 
-st.set_page_config(
-    page_title="Fake News Detector",
-    page_icon="🗞️",
-    layout="centered",
-    initial_sidebar_state="expanded",
-)
+def configure_page() -> None:
+    st.set_page_config(
+        page_title="Fake News Detector",
+        page_icon="🗞️",
+        layout="centered",
+        initial_sidebar_state="expanded",
+    )
 
 
 @st.cache_resource(show_spinner=False)
 def cached_model():
     model = load_model("../models/builds/fake-news_distilbert_model.keras")
+    model.compile(
+        optimizer=Adam(learning_rate=5e-4),
+        loss="binary_crossentropy",
+        metrics=["accuracy"],
+    )
     return model
 
 
-def predict_text(text: str, model):
+def predict_text(text: str, model) -> np.ndarray:
     cleaned_text = clean_text(text)
     df = pd.DataFrame([cleaned_text], columns=["text"])
     st.session_state.user_df = df
@@ -35,7 +42,7 @@ def predict_text(text: str, model):
     return predictions
 
 
-def predict_class(predictions):
+def predict_class(predictions: np.ndarray) -> str:
     return "fake" if np.argmax(predictions) == 0 else "real"
 
 
@@ -58,7 +65,7 @@ def create_wordcloud(df: pd.DataFrame, column: str) -> None:
     st.pyplot(plt.gcf())
 
 
-def display_home():
+def display_home() -> None:
     col1, col2 = st.columns([1, 1])
     with col1:
         st.html(
@@ -81,7 +88,7 @@ def display_home():
     st.markdown(intro_text)
 
 
-def input_data():
+def input_data() -> None:
     st.markdown("""### Enter Text Below:""")
     user_input = st.text_area(" ", height=400)
     submit_button = st.button("Submit")
@@ -99,7 +106,7 @@ def input_data():
         st.session_state.result_confidence = result_confidence
 
 
-def display_data():
+def display_data() -> None:
     # Check if 'result' and 'result_confidence' exist in the session state due
     if (
         "result" in st.session_state
