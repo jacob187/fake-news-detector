@@ -6,17 +6,17 @@ The Fake News Detector is a project aimed at identifying and flagging fake news 
 
 ## Features
 
-- Input a news article URL or text for analysis
-- Analyze the content using natural language processing techniques
-- Generate a credibility score for the article
-- Flag articles as potentially fake or reliable
+- Analyze the content using natural language processing techniques.
+- Generate a credibility score for the article.
+- Flag articles as potentially fake or reliable.
+- Generate meaningful visualtions.
 
 ## Installation
 
 1. Clone the repository: `git clone https://github.com/fake-news-detector.git`
-2. Ensure that you are using the specified python version is the .python-version file
+2. Ensure that you are using the specified python version is the .python-version file.
 3. Install the required dependencies: `pip install -r requirements.txt`
-4. Download the two csv files from [Kaggle](https://www.kaggle.com/datasets/bhavikjikadara/fake-news-detection)
+4. Download the two csv files from [Kaggle](https://www.kaggle.com/datasets/bhavikjikadara/fake-news-detection).
 5. Create the directories ./data/raw and ./data/processed
 6. Place the two csv files in ./data/raw
 
@@ -42,15 +42,15 @@ Note: Make sure to have the necessary dependencies installed before running the 
 
 ## Model training
 
-If you wish to train AI model run `python fake_news_distilbert_model_main.py` in the `./models directory`
+If you wish to train AI model run `python fake_news_distilbert_model_main.py` in the `./models` directory.
 
 - Hardware limitations may prevent the model from training as the code is written.
 - You can adjust the code in `./models/train_model.py` accordingly.
 
 ## Streamlit Applicaiton
 
-Navigate to `./streamlit` and run `streamlit run Home.py` to view the streamlit application
+Navigate to `./streamlit` and run `streamlit run Home.py` to view the streamlit application.
 
 ## Contributions
 
-Contributions to the Fake News Detector project are encouraged. If you would like to contribute, please feel free to open a pull request!
+Contributions are encouraged. If you would like to contribute, please feel free to open an issue or create a pull request.
