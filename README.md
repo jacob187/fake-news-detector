@@ -9,7 +9,7 @@ The Fake News Detector is a project aimed at identifying and flagging fake news 
 - Analyze the content using natural language processing techniques.
 - Generate a credibility score for the article.
 - Flag articles as potentially fake or reliable.
-- Generate meaningful visualtions.
+- Generate meaningful visualizations.
 
 ## Installation
 
@@ -36,7 +36,7 @@ To analyze the data using the Jupyter notebook `20240315-analyze-individual-data
 To create the training dataset using the Jupyter notebook `preprocess.ipynb`, follow these steps:
 
 1. Click on the `20240315-preprocess-data.ipynb` file to open it.
-2. Run the notebook cell by cell to execute the code and preprocess the data.
+2. Run the notebook cell by cell to execute the code and pre-process the data.
 
 Note: Make sure to have the necessary dependencies installed before running the notebooks. Refer to the "Installation" section in the README for more information.
 
@@ -49,7 +49,7 @@ If you wish to train AI model run `python fake_news_distilbert_model_main.py` in
 
 ## Streamlit Applicaiton
 
-Navigate to `./streamlit` and run `streamlit run Home.py` to view the streamlit application.
+Navigate to `./streamlit` and run `streamlit run Home.py` to view the Streamlit application.
 
 ## Contributions
 
